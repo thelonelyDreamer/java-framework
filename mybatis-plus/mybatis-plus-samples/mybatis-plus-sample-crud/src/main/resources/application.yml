@@ -1,0 +1,20 @@
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    schema: classpath:db/schema-mysql.sql
+    data: classpath:db/data-mysql.sql
+    url: jdbc:p6spy:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: wangchao
+    initialization-mode: always
+    druid:
+      test-while-idle: false
+
+# Logger Config
+logging:
+  level:
+    com.baomidou.mybatisplus.samples: debug
+# MyBatis-Plus 配置
+server:
+  port: 12345

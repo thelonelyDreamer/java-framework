@@ -1,0 +1,19 @@
+
+# Logger Config
+logging:
+  level:
+    com.baomidou.mybatisplus.samples.quickstart: debug
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: wangchao
+    type: com.alibaba.druid.pool.DruidDataSource
+    schema:
+      - classpath:db/schema-mysql.sql
+    data:
+      - classpath:db/data-mysql.sql
+    initialization-mode: always
+server:
+  port: 12345

@@ -1,0 +1,17 @@
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    schema: classpath:db/schema-h2.sql
+    data: classpath:db/data-h2.sql
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: wangchao
+    initialization-mode: always
+
+
+# Logger Config
+logging:
+  level:
+    com.baomidou.mybatisplus.samples.ar: debug
+# MyBatis-Plus 配置该演示无
