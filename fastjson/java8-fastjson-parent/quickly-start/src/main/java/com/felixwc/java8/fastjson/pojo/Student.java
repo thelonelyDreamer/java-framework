@@ -1,6 +1,8 @@
 package com.felixwc.java8.fastjson.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.Date;
@@ -13,6 +15,8 @@ import java.util.Date;
  */
 @Data
 @Accessors(chain = true)
+@AllArgsConstructor
+@NoArgsConstructor
 public class Student {
     private long id;
     private String name;
