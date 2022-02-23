@@ -11,6 +11,7 @@
     <modules>
         <module>quickly-start</module>
         <module>serializer-strategy</module>
+        <module>annotation</module>
     </modules>
 
     <dependencyManagement>
