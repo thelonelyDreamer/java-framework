@@ -1,0 +1,8 @@
+server:
+  port: 12345
+spring:
+  security:
+    user:
+      name: root
+      password: 123
+      roles: lv1
