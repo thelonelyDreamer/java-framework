@@ -1,0 +1,9 @@
+server:
+  port: 12345
+spring:
+  datasource:
+    type: org.springframework.jdbc.datasource.DelegatingDataSource
+    password: wangchao
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:

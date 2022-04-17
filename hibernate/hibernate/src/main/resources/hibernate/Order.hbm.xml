@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定Hibernate配置文件的DTD信息 -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.felixwc.java8.frame.hibernate.pojo.Order" table="order">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="identity"></generator>
+        </id>
+        <property name="name" column="name"></property>
+        <many-to-one name="customer" class="com.felixwc.java8.frame.hibernate.pojo.Customer" column="cid"></many-to-one>
+    </class>
+</hibernate-mapping>
