@@ -28,5 +28,8 @@ public class MainClass {
         while (resultSet.next()){
             System.out.println(resultSet.getInt(1));
         }
+        resultSet.close();
+        statement.close();
+        connection.close();
     }
 }
