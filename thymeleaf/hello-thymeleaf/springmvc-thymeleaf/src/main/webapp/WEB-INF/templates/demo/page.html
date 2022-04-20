@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>page</title>
+</head>
+<body>
+
+    <!--/*@thymesVar id="user" type="com.example.pojo.User"*/-->
+    <div th:object="${user}">
+        <h2 th:text="*{getUsername()}"></h2>
+        <p th:text="*{age}"></p>
+    </div>
+
+    <!--/*@thymesVar id="date" type="java.util.Date"*/-->
+    <p th:text="*{date.toString()}"></p>
+    <p th:text="${date.toString()}"></p>
+
+</body>
+</html>
