@@ -42,7 +42,6 @@ public class BookDo {
     private boolean exist; // 逻辑删除
     @Column
     private Date createdDate; // 创建日期
-
     @Column
     private Date modifiedDate; //修改日期
 }
