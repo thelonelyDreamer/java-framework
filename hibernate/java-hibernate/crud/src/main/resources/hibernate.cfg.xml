@@ -3,10 +3,8 @@
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-<!-- hibernate- configuration是连接配置文件的根元素 -->
 <hibernate-configuration>
     <session-factory>
-        <!-- 指定连接数据库所用的驱动 -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <!-- 指定连接数据库的url，hibernate连接的数据库名 -->
         <property name="connection.url">jdbc:mysql://localhost/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=GMT%2B8</property>
@@ -22,19 +20,5 @@
         <property name="show_sql">true</property>
         <!-- 将SQL脚本进行格式化后再输出 -->
         <property name="hibernate.format_sql">true</property>
-
-        <!-- 连接池配置 -->
-        <property name="hibernate.c3p0.acquire_increment">5</property>
-        <property name="hibernate.c3p0.idle_test_period">60</property>
-        <property name="hibernate.c3p0.timeout">5000</property>
-        <property name="hibernate.c3p0.max_size">30</property>
-        <property name="hibernate.c3p0.min_size">5</property>
-        <property name="hibernate.c3p0.max_statements">10</property>
-
-        <!-- 罗列所有的映射文件 -->
-        <mapping resource="hibernate/Customer.hbm.xml"></mapping>
-        <mapping resource="hibernate/Person.hbm.xml"></mapping>
-        <mapping resource="hibernate/Order.hbm.xml"></mapping>
-        <mapping package="hibernate"></mapping>
     </session-factory>
 </hibernate-configuration>
