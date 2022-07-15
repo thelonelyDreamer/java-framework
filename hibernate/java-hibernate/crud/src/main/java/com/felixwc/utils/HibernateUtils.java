@@ -1,5 +1,6 @@
 package com.felixwc.utils;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -18,4 +19,12 @@ public class HibernateUtils {
         SESSION_FACTORY=CONFIGURATION.buildSessionFactory();
     }
 
+    public static Session obtainSession(){
+        Session session = SESSION_FACTORY.openSession();
+        return session;
+    }
+
+    public static void closeSession(Session session){
+        session.close();
+    }
 }
