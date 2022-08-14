@@ -1,0 +1,6 @@
+server:
+  port: 12345
+
+spring:
+  quartz:
+    wait-for-jobs-to-complete-on-shutdown: true

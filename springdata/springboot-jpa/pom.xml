@@ -11,6 +11,8 @@
     <modules>
         <module>quickly-start</module>
         <module>query-method</module>
+        <module>relation</module>
+        <module>xml-config</module>
     </modules>
 
     <dependencyManagement>

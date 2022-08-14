@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="GBK"?>
-<!-- 指定Hibernate配置文件的DTD信息 -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 鎸囧畾Hibernate閰嶇疆鏂囦欢鐨凞TD淇℃伅 -->
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">

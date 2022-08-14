@@ -11,8 +11,9 @@ import org.hibernate.cfg.Configuration;
  * @author felixwc
  */
 public class HibernateUtils {
-    private static final Configuration CONFIGURATION;
-    private static final SessionFactory SESSION_FACTORY;
+    private static  Configuration CONFIGURATION;
+    private static  SessionFactory SESSION_FACTORY;
+    private static ThreadLocal<Session> localSessionHolder=new ThreadLocal<>();
 
     static {
         CONFIGURATION = new Configuration().configure();
@@ -20,11 +21,29 @@ public class HibernateUtils {
     }
 
     public static Session obtainSession(){
-        Session session = SESSION_FACTORY.openSession();
-        return session;
+        Session threadSession=localSessionHolder.get();
+        if(null ==SESSION_FACTORY){
+            configHibernate();
+        }
+        if(null ==threadSession){
+            threadSession = SESSION_FACTORY.openSession();
+            localSessionHolder.set(threadSession);
+        }
+        return threadSession;
     }
 
-    public static void closeSession(Session session){
-        session.close();
+    public static void closeSession(){
+        Session session = localSessionHolder.get();
+        if(null != session){
+            session.close();
+            localSessionHolder.remove();
+        }
+    }
+
+    private static synchronized void configHibernate(){
+        if(null==SESSION_FACTORY){
+            CONFIGURATION = new Configuration().configure();
+            SESSION_FACTORY=CONFIGURATION.buildSessionFactory();
+        }
     }
 }
