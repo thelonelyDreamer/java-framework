@@ -1,25 +1,10 @@
 package org.example;
 
-import com.google.common.util.concurrent.*;
-
-import java.util.concurrent.Executors;
+import java.io.UnsupportedEncodingException;
 
 public class Main {
-    public static void main(String[] args) {
-        ListeningExecutorService listeningExecutorService
-                = MoreExecutors.listeningDecorator(Executors.newCachedThreadPool());
-        ListenableFuture<Integer> future = listeningExecutorService.submit(() -> 8);
-        Futures.addCallback(future, new FutureCallback<Integer>() {
-            @Override
-            public void onSuccess(Integer integer) {
-
-            }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-
-            }
-        },listeningExecutorService);
-
+    public static void main(String[] args) throws UnsupportedEncodingException {
+        String utf8 = new String("sdf".getBytes(), "utf8");
+        System.out.println(utf8);
     }
 }

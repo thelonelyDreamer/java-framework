@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 
 @SpringBootTest
@@ -31,5 +33,10 @@ class Person1RepositoryTest {
     public void test1(){
         List<Person1> person1s = repository.findPerson1ByAgeLessThan(1);
         person1s.stream().forEach(System.out::println);
+    }
+
+    @Test
+    public void test2() throws ExecutionException, InterruptedException {
+        CompletableFuture<String> test = CompletableFuture.supplyAsync(()->"1");
     }
 }
