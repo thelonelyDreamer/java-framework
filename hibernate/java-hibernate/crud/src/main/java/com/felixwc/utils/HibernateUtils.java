@@ -25,7 +25,7 @@ public class HibernateUtils {
         if(null ==SESSION_FACTORY){
             configHibernate();
         }
-        if(null ==threadSession){
+        if(null ==threadSession || !threadSession.isOpen()){
             threadSession = SESSION_FACTORY.openSession();
             localSessionHolder.set(threadSession);
         }

@@ -1,16 +1,18 @@
 package org.example;
 
-import java.util.function.IntFunction;
-import java.util.stream.IntStream;
+import com.sun.org.slf4j.internal.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
-        IntStream.range(0,10).filter((num)->num>5).flatMap(new IntFunction<IntStream>() {
-            @Override
-            public IntStream apply(int value) {
-                return IntStream.range(1,10);
-            }
-        }).forEach(System.out::println);
+    public static void main(String[] args) throws IOException {
+        FileUtils.copyFile(new File("b.txt"),new File("a.txt"));
+        System.out.println(FileUtils.byteCountToDisplaySize(Long.MAX_VALUE));
+        Logger logger = LoggerFactory.getLogger(Main.class);
+        logger.debug("hello");
     }
 
 }
