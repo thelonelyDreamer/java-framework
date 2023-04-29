@@ -9,20 +9,21 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>hello-netty</module>
-        <module>server</module>
         <module>client</module>
         <module>interface-core</module>
-        <module>coupled-cs</module>
+        <module>netty-client-server</module>
     </modules>
     <packaging>pom</packaging>
-
+    <properties>
+        <netty.2023.04.version> 4.1.91.Final</netty.2023.04.version>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
-                <version>4.1.67.Final</version>
+                <version>${netty.2023.04.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
             <dependency>
@@ -48,6 +49,11 @@
                 <artifactId>junit</artifactId>
                 <version>4.13.2</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.36</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

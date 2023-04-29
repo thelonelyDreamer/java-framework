@@ -1,33 +1,40 @@
 package org.example;
 
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringEncoder;
+import com.sun.org.slf4j.internal.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
+import org.example.client.SimpleClient;
 
-import java.net.InetSocketAddress;
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingDeque;
 
 public class Main {
+    private static final BlockingDeque<Object> MESSAGE_QUEUE
+            =new LinkedBlockingDeque<>();
+    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) throws InterruptedException {
-        ChannelFuture localhost = new Bootstrap()
-                .group(new NioEventLoopGroup())
-                .channel(NioSocketChannel.class)
-                .handler(new ChannelInitializer<NioSocketChannel>() {
-                    @Override
-                    protected void initChannel(NioSocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(new StringEncoder());
-                    }
-                })
-                .connect(new InetSocketAddress("localhost", 10000))
-                .sync();
-        Channel channel = localhost.channel();
+        Thread thread = startSimpleClient();
         Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < 10 ; i++) {
-            channel.writeAndFlush(scanner.next());
+        boolean flag =true;
+        while (flag){
+            String message = scanner.next();
+            if(Objects.isNull(message)|| (0==message.length())) continue;
+            if("quit".equalsIgnoreCase(message)){
+                thread.interrupt();
+                flag=true;
+            }else{
+                MESSAGE_QUEUE.put(message);
+            }
         }
+    }
+
+
+    public static Thread startSimpleClient(){
+        Thread clientThead = new Thread(() -> {
+            new SimpleClient("localhost",10000,MESSAGE_QUEUE).start();
+        });
+        return clientThead;
     }
 }

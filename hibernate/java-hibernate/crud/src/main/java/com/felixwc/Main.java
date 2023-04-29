@@ -36,8 +36,6 @@ public class Main {
         String sql = "select id,name from grade";
         list = session.createSQLQuery(sql).addEntity(Grade.class).list();
         NativeQuery sqlQuery = session.createSQLQuery(sql);
-
-
         for(Grade obj : list){
             System.out.println(obj);
         }
